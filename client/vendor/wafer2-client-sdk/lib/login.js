@@ -109,6 +109,7 @@ var login = function login(options) {
                     var res = data.data
                     if (res.userinfo) {
                         Session.set(res.skey);
+                        console.log(res);
                         options.success(userInfo);
                     } else {
                         var errorMessage = '登录失败(' + data.error + ')：' + (data.message || '未知错误');
