@@ -106,11 +106,12 @@ var login = function login(options) {
 
                 // 成功地响应会话信息
                 if (data && data.code === 0 && data.data.skey) {
+                    console.log(data)
                     var res = data.data
                     if (res.userinfo) {
                         Session.set(res.skey);
-                        console.log(res);
-                        options.success(userInfo);
+                        // 这个返回的userinfo包含openid，可以作为用户的唯一标识
+                        options.success(res.userinfo);
                     } else {
                         var errorMessage = '登录失败(' + data.error + ')：' + (data.message || '未知错误');
                         var noSessionError = new LoginError(constants.ERR_LOGIN_SESSION_NOT_RECEIVED, errorMessage);
