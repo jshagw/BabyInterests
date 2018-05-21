@@ -13,4 +13,7 @@
         </view>
         <view wx:else>请升级微信版本</view>
     </view>
+    <view>
+      <button bindtap='getOpenId'>获取openid</button>
+    </view>
 </view>

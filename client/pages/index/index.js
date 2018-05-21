@@ -71,5 +71,21 @@ Page({
 
     bindGetUserInfo: function (e) {
       //console.log(e.detail.userInfo)
+    },
+
+    getOpenId: function() {
+      qcloud.request({
+        url: config.service.openidUrl,
+        login: false,
+        success(result) {
+          util.showSuccess('获取成功')
+          console.log(result.data.data)
+        },
+
+        fail(error) {
+          util.showModel('请求失败', error)
+          console.log('request fail', error)
+        }
+      })
     }
 })
