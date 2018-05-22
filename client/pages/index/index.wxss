@@ -32,6 +32,12 @@ page {
     color: #007AFF;
 }
 
+.babyinfo-name {
+    font-size: 32rpx;
+    color: #007AFF;
+    align-content: center;
+}
+
 .uploader, .tunnel {
     height: auto;
     padding: 0 0 0 40rpx;

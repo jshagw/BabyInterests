@@ -9,7 +9,9 @@ Page({
         userInfo: {},
         logged: false,
         takeSession: false,
-        requestResult: ''
+        requestResult: '',
+        baby: {},
+        hasBaby: false
     },
 
     // 用户登录示例

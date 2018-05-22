@@ -10,10 +10,29 @@
         <!-- 需要使用 button 来授权登录 -->
         <view wx:if="{{canIUse}}">
             <button wx:if="{{!logged}}" open-type="getUserInfo">授权登录</button>
+            <text class='userinfo-nickname' wx:if="{{logged}}">{{userInfo.nickName}}</text>
         </view>
         <view wx:else>请升级微信版本</view>
     </view>
+    <!--
     <view>
       <button bindtap='getOpenId'>获取openid</button>
+    </view>
+    -->
+
+    <view class="userinfo">
+      <image class="userinfo-avatar" src="./user-unlogin.png" background-size="cover">
+      </image>
+      <navigator url="../AddBaby/AddBaby" hover-class="navigator-hover" 
+        wx:if="{{!hasBaby}}">点击设置我的宝宝</navigator>
+      <text class='babyinfo-name' wx:if="{{logged}}">{{baby.name}}</text>
+    </view>
+
+    <view class="userinfo">
+      <image class="userinfo-avatar" src="./user-unlogin.png" background-size="cover">
+      </image>
+      <navigator url="../CurrentCourse/CurrentCourse" hover-class="navigator-hover">
+        今日课程
+      </navigator>
     </view>
 </view>
