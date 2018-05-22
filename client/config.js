@@ -17,7 +17,9 @@ var config = {
         // 测试的请求地址，用于测试会话
         requestUrl: `${host}/weapp/user`,
 
-        openidUrl: `${host}/weapp/openid`
+        openidUrl: `${host}/weapp/openid`,
+
+        babyUrl: `${host}/weapp/baby`
     }
 };
 

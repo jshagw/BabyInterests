@@ -6,15 +6,33 @@ var util = require('../../utils/util.js')
 Page({
   data: {
     sex: '1',
-    birthday: ''
+    birthday: "2013-04-15"
   },
 
-  getCurrentCourses: function () {
+  submit: function (event) {
+    console.log(event.detail.value)
+    var params = event.detail.value
 
-  },
+    if (params.input_name === "") {
+      util.showModel("输入错误", "名称不能为空")
+      return
+    }
 
-  onLoad: function () {
-    this.getCurrentCourses()
+    qcloud.request({
+      url: config.service.babyUrl,
+      method: 'POST',
+      login: false,
+      success(result) {
+        util.showSuccess('设置成功')
+        console.log(result.data.data)
+        wx.navigateBack()
+      },
+
+      fail(error) {
+        util.showModel('请求失败', error)
+        console.log('request fail', error)
+      }
+    })
   },
 
   selectSex: function (event) {

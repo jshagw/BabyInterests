@@ -18,4 +18,6 @@ router.get('/user', validationMiddleware, controllers.user)
 
 router.get('/openid', controllers.openid)
 
+router.post('/baby', controllers.baby.post)
+
 module.exports = router
