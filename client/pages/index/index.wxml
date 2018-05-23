@@ -23,9 +23,7 @@
     <view class="userinfo">
       <image class="userinfo-avatar" src="./user-unlogin.png" background-size="cover">
       </image>
-      <navigator url="../AddBaby/AddBaby" hover-class="navigator-hover" 
-        wx:if="{{!hasBaby}}">点击设置我的宝宝</navigator>
-      <text class='babyinfo-name' wx:if="{{logged}}">{{baby.name}}</text>
+      <navigator url="../AddBaby/AddBaby" hover-class="navigator-hover">{{babyInfo.hasBaby ? babyInfo.name : "点击设置我的宝宝"}}</navigator>
     </view>
 
     <view class="userinfo">

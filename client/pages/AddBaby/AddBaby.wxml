@@ -4,7 +4,7 @@
     <view class="weui-cells__title">姓名</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
-        <input name="input_name" class="weui-input" auto-focus placeholder="输入宝宝姓名"/>
+        <input name="name" class="weui-input" auto-focus placeholder="{{name}}" value='{{hasBaby?name:""}}'/>
       </view>
     </view>
   </view>
@@ -12,7 +12,7 @@
     <view class="weui-cells__title">性别</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
-        <radio-group name="radio_sex" bindchange='selectSex'>
+        <radio-group name="sex" bindchange='selectSex'>
           <radio value='1' checked='{{sex==="1"}}'>男</radio>
           <radio value='2' checked='{{sex==="2"}}'>女</radio>
         </radio-group>
@@ -23,11 +23,24 @@
     <view class="weui-cells__title">生日</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
-        <picker mode="date" name="picker_birthday" value="{{birthday}}" start="2000-01-01" end="2018-01-01" bindchange="selectBirthday">
+        <picker mode="date" name="birthday" value="{{birthday}}" start="2000-01-01" end="2018-01-01" bindchange="selectBirthday">
           <view class="picker">
             {{birthday}}
           </view>
         </picker>
+      </view>
+    </view>
+  </view>
+  <view class="page-section">
+    <view class="weui-cells__title">与宝宝关系</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <radio-group name="relation">
+          <radio value='爸爸' checked='{{relation==="爸爸"}}'>爸爸</radio>
+          <radio value='妈妈' checked='{{relation==="妈妈"}}'>妈妈</radio>
+          <radio value='爷爷' checked='{{relation==="爷爷"}}'>爷爷</radio>
+          <radio value='奶奶' checked='{{relation==="奶奶"}}'>奶奶</radio>
+        </radio-group>
       </view>
     </view>
   </view>

@@ -2,6 +2,7 @@
 var qcloud = require('../../vendor/wafer2-client-sdk/index')
 var config = require('../../config')
 var util = require('../../utils/util.js')
+var baby = require('../../utils/baby.js')
 
 Page({
     data: {
@@ -10,8 +11,12 @@ Page({
         logged: false,
         takeSession: false,
         requestResult: '',
-        baby: {},
-        hasBaby: false
+        babyInfo: baby.get()
+    },
+
+    // 获取宝宝信息
+    getBabyInfo: function() {
+
     },
 
     // 用户登录示例
@@ -30,6 +35,9 @@ Page({
                         userInfo: result,
                         logged: true
                     })
+
+                    // 获取宝宝信息
+                    that.getBabyInfo()
                 } else {
                     // 如果不是首次登录，不会返回用户信息，请求用户信息接口获取
                     qcloud.request({
@@ -41,6 +49,8 @@ Page({
                                 userInfo: result.data.data,
                                 logged: true
                             })
+
+                            that.getBabyInfo()
                         },
 
                         fail(error) {
@@ -69,6 +79,10 @@ Page({
           }
         }
       })
+    },
+
+    onShow: function() {
+      this.setData({babyInfo: baby.get()})
     },
 
     bindGetUserInfo: function (e) {
