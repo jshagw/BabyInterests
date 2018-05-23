@@ -23,11 +23,12 @@
     <view class="userinfo">
       <image class="userinfo-avatar" src="./user-unlogin.png" background-size="cover">
       </image>
-      <navigator wx:if="{{!requestBabyInfoFailed}}" 
+      <button wx:if="{{requestBabyInfoFailed}}" bindtap='getBabyInfo'>获取宝宝信息</button>
+      <navigator wx:elif="{{babyInfo.is_creator}}" 
                 url="../AddBaby/AddBaby" 
                 hover-class="navigator-hover"
       >{{babyInfo.hasBaby ? babyInfo.name : "点击设置我的宝宝"}}</navigator>
-      <button wx:else bindtap='getBabyInfo'>获取宝宝信息</button>
+      <text wx:else>{{babyInfo.name}}</text>
     </view>
 
     <view class="userinfo">

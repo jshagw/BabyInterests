@@ -12,9 +12,9 @@
     <view class="weui-cells__title">性别</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
-        <radio-group name="sex" bindchange='selectSex'>
-          <radio value='1' checked='{{sex==="1"}}'>男</radio>
-          <radio value='2' checked='{{sex==="2"}}'>女</radio>
+        <radio-group name="sex">
+          <radio value='1' checked='{{sex=="1"}}'>男</radio>
+          <radio value='2' checked='{{sex=="2"}}'>女</radio>
         </radio-group>
       </view>
     </view>
@@ -36,10 +36,10 @@
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
         <radio-group name="relation">
-          <radio value='1' checked='{{relation==="1"}}'>爸爸</radio>
-          <radio value='2' checked='{{relation==="2"}}'>妈妈</radio>
-          <radio value='3' checked='{{relation==="3"}}'>爷爷</radio>
-          <radio value='4' checked='{{relation==="4"}}'>奶奶</radio>
+          <radio value='1' checked='{{relation=="1"}}'>爸爸</radio>
+          <radio value='2' checked='{{relation=="2"}}'>妈妈</radio>
+          <radio value='3' checked='{{relation=="3"}}'>爷爷</radio>
+          <radio value='4' checked='{{relation=="4"}}'>奶奶</radio>
         </radio-group>
       </view>
     </view>

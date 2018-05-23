@@ -3,9 +3,10 @@ var babyInfo = {
   hasBaby: false,
   id: '',
   name: '我的宝宝',
-  sex: '1',
+  sex: 1,
   birthday: "2013-04-15",
-  relation: "2"
+  relation: 2,
+  is_creator: 1
 }
 
 var get = function() {

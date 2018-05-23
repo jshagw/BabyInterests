@@ -23,8 +23,14 @@ Page({
         method: "GET",
         login: false,
         success(result) {
+          var babyInfo = result.data.data[0]
           console.log("baby", result.data.data)
-          baby.set(result.data.data)
+          if (babyInfo.hasOwnProperty('birthday')) {
+            console.log(babyInfo.birthday)
+            babyInfo.birthday = util.formatDate(new Date(babyInfo.birthday))
+            console.log(babyInfo.birthday)
+          }
+          baby.set(babyInfo)
           that.setData({ babyInfo: baby.get() })
         },
 
