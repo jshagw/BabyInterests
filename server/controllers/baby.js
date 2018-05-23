@@ -1,9 +1,14 @@
 const { mysql } = require('../qcloud')
 
 module.exports = {
+  get:  async (ctx, next) => {
+    ctx.state.code = 0
+  },
+
   post: async (ctx, next) => {
           var params = ctx.req.data 
-          await mysql.transaction(function(trx) {
+          ctx.state.code = -1
+ /*         await mysql.transaction(function(trx) {
             mysql('bi_babies').insert({
               name: params.baby_name,
               sex: params.baby_sex,
@@ -22,6 +27,6 @@ module.exports = {
           }).catch(function(e) {
             ctx.state.code = -1
             throw new Error(err)
-          })
+          })*/
   }
 }

@@ -5,7 +5,7 @@ var babyInfo = {
   name: '我的宝宝',
   sex: '1',
   birthday: "2013-04-15",
-  relation: "妈妈"
+  relation: "2"
 }
 
 var get = function() {
@@ -19,7 +19,10 @@ var set = function(info) {
       babyInfo[key] = info[key]
     }
   }
-  babyInfo.hasBaby = true
+
+  if (info.hasOwnProperty('name')) {
+    babyInfo.hasBaby = true
+  }
   //console.log(babyInfo)
 }
 

@@ -11,12 +11,28 @@ Page({
         logged: false,
         takeSession: false,
         requestResult: '',
-        babyInfo: baby.get()
+        babyInfo: {},
+        requestBabyInfoFailed: false
     },
 
     // 获取宝宝信息
     getBabyInfo: function() {
+      var that = this
+      qcloud.request({
+        url: config.service.babyUrl,
+        method: "GET",
+        login: false,
+        success(result) {
+          console.log("baby", result.data.data)
+          baby.set(result.data.data)
+          that.setData({ babyInfo: baby.get() })
+        },
 
+        fail(error) {
+          console.log('request baby fail', error)
+          that.setData({ requestBabyInfoFailed: true})
+        }
+      })
     },
 
     // 用户登录示例
