@@ -46,11 +46,18 @@ page {
     box-sizing: border-box;
 }
 
-.uploader-text, .tunnel-text {
+.navigate-name {
     width: 100%;
     line-height: 52px;
     font-size: 34rpx;
     color: #007AFF;
+}
+
+.navigate-menu {
+    width: 100%;
+    line-height: 52px;
+    font-size: 34rpx;
+    color: #FF0000;
 }
 
 .uploader-container {

@@ -1,8 +1,10 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/AddBaby/AddBaby",
     "pages/CurrentCourse/CurrentCourse",
-    "pages/AddBaby/AddBaby"
+    "pages/ManageCourses/ManageCourses",
+    "pages/AddCourse/AddCourse"
   ],
   "window":{
     "backgroundColor":"#F6F6F6",

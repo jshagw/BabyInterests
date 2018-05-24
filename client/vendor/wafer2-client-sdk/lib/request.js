@@ -74,8 +74,7 @@ function request(options) {
     function doRequest() {
         var authHeader = buildAuthHeader(Session.get());
 
-        //console.log(originHeader)
-        //console.log(authHeader)
+        //console.log("request:", options)
 
         wx.request(utils.extend({}, options, {
             header: utils.extend({}, originHeader, authHeader),

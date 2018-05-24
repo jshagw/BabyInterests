@@ -21,4 +21,8 @@ router.get('/openid', controllers.openid)
 router.get('/baby', controllers.baby.get)
 router.post('/baby', controllers.baby.post)
 
+router.get('/course', controllers.course.get)
+router.post('/course', controllers.course.post)
+router.delete('/course', controllers.course.delete)
+
 module.exports = router

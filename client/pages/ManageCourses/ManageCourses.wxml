@@ -1,0 +1,25 @@
+<!--ManageCourses.wxml-->
+<view class="container">
+  <view class="list">
+    <navigator url="../AddCourse/AddCourse" 
+                open-type="navigate" class="navigate-add"
+    >点击添加新的兴趣班</navigator>
+  </view>
+    <!-- 课程列表 -->
+  <scroll-view scroll-y>
+    <view class="list_row" 
+          wx:for="{{courses}}" wx:key="id" id="{{index}}">
+      <view class="list-item-course">
+        <text>{{item.course_name}}</text>
+      </view>
+      <view class="list_cloum">
+        <view class="list-item-attr">
+        <text>{{item.institution_name}}</text>
+        </view>
+        <view class="list-item-attr">
+          <text>{{item.begin_date}} ~ {{item.end_date}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
