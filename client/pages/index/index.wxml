@@ -19,31 +19,33 @@
       <button bindtap='getOpenId'>获取openid</button>
     </view>
     -->
+    <block wx:if="{{logged}}">
+      <view class="userinfo">
+        <image class="userinfo-avatar" src="./user-unlogin.png" background-size="cover">
+        </image>
+        <button wx:if="{{requestBabyInfoFailed}}" bindtap='getBabyInfo'>获取宝宝信息</button>
+        <navigator wx:elif="{{babyInfo.is_creator}}" 
+                  url="../AddBaby/AddBaby" 
+                  open-type="navigate" class="navigate-name"
+        >{{babyInfo.hasBaby ? babyInfo.name : "点击设置我的宝宝"}}</navigator>
+        <text wx:else>{{babyInfo.name}}</text>
+      </view>
+      <block wx:if="{{babyInfo.hasBaby}}">
+        <view class="userinfo">
+          <image class="userinfo-avatar" src="./user-unlogin.png" background-size="cover">
+          </image>
+          <navigator url="../CurrentCourse/CurrentCourse" 
+                    open-type="navigate" class="navigate-menu"
+          >今日兴趣班</navigator>
+        </view>
 
-    <view class="userinfo">
-      <image class="userinfo-avatar" src="./user-unlogin.png" background-size="cover">
-      </image>
-      <button wx:if="{{requestBabyInfoFailed}}" bindtap='getBabyInfo'>获取宝宝信息</button>
-      <navigator wx:elif="{{babyInfo.is_creator}}" 
-                url="../AddBaby/AddBaby" 
-                open-type="navigate" class="navigate-name"
-      >{{babyInfo.hasBaby ? babyInfo.name : "点击设置我的宝宝"}}</navigator>
-      <text wx:else>{{babyInfo.name}}</text>
-    </view>
-
-    <view class="userinfo">
-      <image class="userinfo-avatar" src="./user-unlogin.png" background-size="cover">
-      </image>
-      <navigator url="../CurrentCourse/CurrentCourse" 
-                open-type="navigate" class="navigate-menu"
-      >今日课程</navigator>
-    </view>
-
-    <view class="userinfo">
-      <image class="userinfo-avatar" src="./user-unlogin.png" background-size="cover">
-      </image>
-      <navigator url="../ManageCourses/ManageCourses" 
-                open-type="navigate" class="navigate-menu"
-      >课程管理</navigator>
-    </view>
+        <view class="userinfo">
+          <image class="userinfo-avatar" src="./user-unlogin.png" background-size="cover">
+          </image>
+          <navigator url="../ManageCourses/ManageCourses" 
+                    open-type="navigate" class="navigate-menu"
+          >兴趣班管理</navigator>
+        </view>
+      </block>
+    </block>
 </view>

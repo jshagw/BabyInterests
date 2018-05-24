@@ -25,9 +25,6 @@ Page({
         success(result) {
           var babyInfo = result.data.data[0]
           console.log("baby", result.data.data)
-          if (babyInfo.hasOwnProperty('birthday')) {
-            babyInfo.birthday = util.formatDate(new Date(babyInfo.birthday))
-          }
           baby.set(babyInfo)
           that.setData({ babyInfo: baby.get() })
         },

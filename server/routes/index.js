@@ -21,8 +21,15 @@ router.get('/openid', controllers.openid)
 router.get('/baby', controllers.baby.get)
 router.post('/baby', controllers.baby.post)
 
+// 宝宝兴趣班
+router.get('/interest', controllers.interest.get)
+router.post('/interest', controllers.interest.post)
+router.delete('/interest', controllers.interest.delete)
+
+// 系统课程
 router.get('/course', controllers.course.get)
-router.post('/course', controllers.course.post)
-router.delete('/course', controllers.course.delete)
+
+// 培训机构
+router.get('/institution', controllers.institution.get)
 
 module.exports = router

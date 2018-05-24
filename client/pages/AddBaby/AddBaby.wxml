@@ -23,7 +23,9 @@
     <view class="weui-cells__title">生日</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
-        <picker mode="date" name="birthday" value="{{birthday}}" start="2000-01-01" end="2018-01-01" bindchange="selectBirthday">
+        <picker mode="date" name="birthday" value="{{birthday}}" 
+                start="2000-01-01" end="2018-01-01"
+        >
           <view class="picker">
             {{birthday}}
           </view>

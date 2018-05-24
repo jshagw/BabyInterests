@@ -19,8 +19,9 @@ var config = {
 
         openidUrl: `${host}/weapp/openid`,
         babyUrl: `${host}/weapp/baby`,
+        interestUrl: `${host}/weapp/interest`,
         courseUrl: `${host}/weapp/course`,
-        allCoursesUrl: `${host}/weapp/allCourses`
+        institutionUrl: `${host}/weapp/institution`
     }
 };
 

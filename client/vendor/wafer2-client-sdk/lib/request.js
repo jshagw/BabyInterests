@@ -83,6 +83,7 @@ function request(options) {
                 var data = response.data;
 
                 var error, message;
+                console.log("response:", response)
                 if (data && data.code === -1) {
                     Session.clear();
                     // 如果是登录态无效，并且还没重试过，会尝试登录后刷新凭据重新请求
@@ -97,8 +98,12 @@ function request(options) {
 
                     callFail(error);
                     return;
-                } else {
+                } else if (data && data.code === 0){
                     callSuccess.apply(null, arguments);
+                } else {
+                  error = new RequestError(data.code, data.data);
+                  callFail(error);
+                  return;
                 }
             },
 

@@ -5,7 +5,8 @@ module.exports = async (ctx, next) => {
     ctx.state.code = 0
     ctx.state.data = res
   }).catch(err => {
-    ctx.state.code = -1
-    throw new Error(err)
+    ctx.state.code = -101
+    ctx.state.data = e
+    return
   })
 }

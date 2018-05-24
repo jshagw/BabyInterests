@@ -21,7 +21,7 @@ var set = function(info) {
     }
   }
 
-  if (info.hasOwnProperty('name')) {
+  if (info.hasOwnProperty('id')) {
     babyInfo.hasBaby = true
   }
   //console.log(babyInfo)

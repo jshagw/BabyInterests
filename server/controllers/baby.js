@@ -3,33 +3,27 @@ const { mysql } = require('../qcloud')
 module.exports = {
   get:  async (ctx, next) => {
     var skey = ctx.req.headers["x-wx-skey"]
-    /*var sql = "select b.id, b.name, b.sex, b.birthday, ub.relation, ub.is_creator \
-              from bi_babies b, bi_user_babies ub, cSessionInfo s \
-              where s.skey = ? and s.open_id = ub.open_id and ub.baby_id = b.id"
-    await mysql.raw(sql, skey).then(function (rows) {
-        ctx.state.code = 0
-        ctx.state.data = rows[0]
-      }).catch(function (e) {
-        ctx.state.code = -1
-        throw new Error(e)
-      })*/
+    var fields = "b.id as id \
+                , b.name as name \
+                , b.sex as sex \
+                , date_format(b.birthday, '%Y-%m-%d') as birthday \
+                , ub.relation as relation \
+                , ub.is_creator as is_creator"
     await mysql.select(
-        'bi_babies.id as id',
-        'bi_babies.name as name',
-        'bi_babies.sex as sex',
-        'bi_babies.birthday as birthday',
-        'bi_user_babies.relation as relation',
-        'bi_user_babies.is_creator as is_creator'
-      ).from('bi_babies').join(
-        'bi_user_babies', 'bi_babies.id', 'bi_user_babies.baby_id'
+        mysql.raw(fields)
+      )
+      .from('bi_babies as b')
+      .join(
+        'bi_user_babies as ub', 'b.id', 'ub.baby_id'
       ).join(
-        'cSessionInfo', 'bi_user_babies.open_id', 'cSessionInfo.open_id'
-        ).where({'cSessionInfo.skey' : skey}).then(function(rows) {
+        'cSessionInfo as s', 'ub.open_id', 's.open_id'
+        ).where({'s.skey' : skey}).then(function(rows) {
             ctx.state.code = 0
             ctx.state.data = rows
           }).catch(function(e) {
-            ctx.state.code = -1
-            throw new Error(e)
+            ctx.state.code = -101
+            ctx.state.data = e
+            return
           })
   },
 
@@ -39,12 +33,13 @@ module.exports = {
 
     await mysql('cSessionInfo').select('open_id').where('skey', skey)
       .then(function(result) {
-        var open_id = result[0].open_id
-        if (!open_id) {
-          ctx.state.code = -1
-          throw new Error("not found user")
+        if (result.length === 0 || !result[0].open_id) {
+          ctx.state.code = -102
+          ctx.state.data = "未找到用户信息"
+          return
         }
 
+        var open_id = result[0].open_id
         if ( params.id ) {
           mysql.transaction(function (trx) {
             mysql('bi_babies').update({
@@ -90,8 +85,9 @@ module.exports = {
           })
         }
       }).catch(function (e) {
-        ctx.state.code = -1
-        throw new Error(e)
+        ctx.state.code = -101
+        ctx.state.data = e
+        return
       })
   }
 }

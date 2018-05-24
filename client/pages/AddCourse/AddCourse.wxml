@@ -1,46 +1,58 @@
 <!--AddCourse.wxml-->
 <form bindsubmit="submit">
   <view class="page-section">
-    <view class="weui-cells__title">姓名</view>
+    <view class="weui-cells__title">选择课程</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
-        <input name="name" class="weui-input" auto-focus placeholder="{{name}}" value='{{hasBaby?name:""}}'/>
-      </view>
-    </view>
-  </view>
-  <view class="page-section">
-    <view class="weui-cells__title">性别</view>
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell weui-cell_input">
-        <radio-group name="sex">
-          <radio value='1' checked='{{sex=="1"}}'>男</radio>
-          <radio value='2' checked='{{sex=="2"}}'>女</radio>
+        <radio-group name="course_id" bindchange="selectCourse">
+          <radio wx:for="{{courses}}" wx:key="id" value="{{item.id}}"
+                 checked='{{item.id == sel_course}}'
+          >
+            {{item.name}}
+          </radio>
         </radio-group>
       </view>
     </view>
   </view>
   <view class="page-section">
-    <view class="weui-cells__title">生日</view>
+    <view class="weui-cells__title">选择培训机构</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
-        <picker mode="date" name="birthday" value="{{birthday}}" start="2000-01-01" end="2018-01-01" bindchange="selectBirthday">
+        <radio-group name="institution_id">
+          <radio wx:for="{{institutions}}" wx:key="id" value="{{item.id}}"
+                 checked='{{index===0}}'
+          >
+            {{item.name}}    {{item.address}}
+          </radio>
+        </radio-group>
+      </view>
+    </view>
+  </view>
+  <view class="page-section">
+    <view class="weui-cells__title">开始日期</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <picker mode="date" name="begin_date" start="2018-01-01"
+                bindchange='selectBeginDate'
+        >
           <view class="picker">
-            {{birthday}}
+            {{begin_date ? begin_date : "选择开始日期"}}
           </view>
         </picker>
       </view>
     </view>
   </view>
   <view class="page-section">
-    <view class="weui-cells__title">与宝宝关系</view>
+    <view class="weui-cells__title">结束日期</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
-        <radio-group name="relation">
-          <radio value='1' checked='{{relation=="1"}}'>爸爸</radio>
-          <radio value='2' checked='{{relation=="2"}}'>妈妈</radio>
-          <radio value='3' checked='{{relation=="3"}}'>爷爷</radio>
-          <radio value='4' checked='{{relation=="4"}}'>奶奶</radio>
-        </radio-group>
+        <picker mode="date" name="end_date" start="2018-01-01"
+                bindchange='selectEndDate'
+        >
+          <view class="picker">
+            {{end_date ? end_date : "选择结束日期"}}
+          </view>
+        </picker>
       </view>
     </view>
   </view>
