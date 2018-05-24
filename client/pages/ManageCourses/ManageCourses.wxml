@@ -7,7 +7,7 @@
   </view>
     <!-- 课程列表 -->
   <scroll-view scroll-y>
-    <view class="list_row" 
+    <view class="list_row" bindlongpress='longPressCourse'
           wx:for="{{courses}}" wx:key="id" id="{{index}}">
       <view class="list-item-course">
         <text>{{item.course_name}}</text>

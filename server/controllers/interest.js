@@ -2,7 +2,9 @@ const { mysql } = require('../qcloud')
 
 module.exports = {
   get: async (ctx, next) => {
-    var baby_id = ctx.request.query.baby_id
+    var query = ctx.request.query
+    var baby_id = query.baby_id
+    var status = query.status ? query.status : 1
     // 用raw函数，才能使用mysql的内置函数
     var fields = "bc.id as id, ti.name as institution_name, c.name as course_name \
                   , date_format(bc.begin_date, '%Y-%m-%d') as begin_date \
@@ -13,7 +15,10 @@ module.exports = {
       'bi_training_institutions as ti', 'ti.id', 'bc.institution_id'
       ).join(
       'bi_courses as c', 'c.id', 'bc.course_id'
-      ).where({ 'bc.baby_id': baby_id }).then(function (rows) {
+      ).where({ 
+        'bc.baby_id': baby_id,
+        'bc.status': status
+      }).then(function (rows) {
         ctx.state.code = 0
         ctx.state.data = rows
       }).catch(function (e) {
@@ -29,7 +34,8 @@ module.exports = {
     await mysql('bi_baby_courses').select('id')
       .where({
         'baby_id': params.baby_id,
-        'course_id': params.course_id
+        'course_id': params.course_id,
+        'status': 1
       })
       .then(function (rows) {
         if (rows.length > 0 ) {
@@ -61,9 +67,18 @@ module.exports = {
 
   delete: async (ctx, next) => {
     var params = ctx.request.body
-    var skey = ctx.req.headers["x-wx-skey"]
-
-    ctx.state.code = -101
+    
+    await mysql('bi_baby_courses').update({
+        'status': 99
+      })
+      .where({
+        'id': params.id
+      })
+      .catch(function (e) {
+        ctx.state.code = -101
+        ctx.state.data = e
+        return
+      })
   },
 
   getAllCourses: async (ctx, next) => {

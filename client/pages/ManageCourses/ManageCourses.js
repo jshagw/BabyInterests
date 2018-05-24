@@ -31,5 +31,55 @@ Page({
   
   onLoad: function() {
     this.getCourses()
+  },
+
+  deleteCourse: function(id) {
+    qcloud.request({
+      url: config.service.interestUrl,
+      method: "DELETE",
+      login: false,
+      data: {id: id},
+      
+      success(result) {
+        util.showSuccess('删除成功')
+        wx.navigateTo({
+          url: './ManageCourses',
+        })
+      },
+
+      fail(error) {
+        util.showModel('请求失败', error)
+      }
+    })    
+  },
+
+  longPressCourse: function(event) {
+    var index = event.currentTarget.id
+    var course = this.data.courses[index]
+    var that = this
+    wx.showActionSheet({
+      itemList: ['设置上课时间','删除'],
+      success: function(res) {
+        switch ( res.tapIndex ) {
+          case 0: {
+            // 设置上课时间
+            break
+          }
+          case 1: {
+            // 删除课程
+            wx.showModal({
+              title: '',
+              content: '确定删除【' + course.course_name + '】吗？',
+              success: function (res) {
+                if (res.confirm) {
+                  that.deleteCourse(course.id)
+                }
+              }
+            })
+            break
+          }
+        }
+      }
+    })
   }
 })
