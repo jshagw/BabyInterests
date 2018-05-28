@@ -16,8 +16,6 @@ router.get('/login', authorizationMiddleware, controllers.login)
 // 用户信息接口（可以用来验证登录态）
 router.get('/user', validationMiddleware, controllers.user)
 
-router.get('/openid', controllers.openid)
-
 router.get('/baby', controllers.baby.get)
 router.post('/baby', controllers.baby.post)
 
