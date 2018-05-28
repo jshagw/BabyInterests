@@ -5,21 +5,33 @@
                 open-type="navigate" class="navigate-add"
     >点击添加新的兴趣班</navigator>
   </view>
-    <!-- 课程列表 -->
-  <scroll-view scroll-y>
-    <view class="list_row" bindlongpress='longPressCourse'
-          wx:for="{{courses}}" wx:key="id" id="{{index}}">
-      <view class="list-item-course">
-        <text>{{item.course_name}}</text>
-      </view>
-      <view class="list_cloum">
-        <view class="list-item-attr">
-        <text>{{item.institution_name}}</text>
+
+  <view class="item-box">
+    <view class="items">
+      <view wx:for="{{courses}}" wx:key="{{id}}" class="item">
+        <view 
+            bindtouchstart="touchS"
+            bindtouchmove="touchM"
+            bindtouchend="touchE"
+            data-index="{{index}}"
+            style="{{item.txtStyle}}"
+            class="inner.txt">
+          <view class="list_row">
+            <view class="list-item-course">
+              <text>{{item.course_name}}</text>
+            </view>
+           
+            <view class="list-item-attr">
+              <text>{{item.institution_name}}</text>
+            </view>
+            <view class="list-item-attr">
+              <text>{{item.begin_date}} ~ {{item.end_date}}</text>
+            </view>
+            
+          </view>
         </view>
-        <view class="list-item-attr">
-          <text>{{item.begin_date}} ~ {{item.end_date}}</text>
-        </view>
+        <view data-index="{{index}}" bindtap="deleteCourse" class="inner.del">删除</view>
       </view>
     </view>
-  </scroll-view>
+  </view>
 </view>

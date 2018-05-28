@@ -23,22 +23,18 @@ page {
 }
 
 .list_row {
-    margin-top: 40rpx;
     height: auto;
     width: 100%;
     background: #FFF;
-    padding: 0 0 0 40rpx;
-    border: 1px solid rgba(0, 0, 0, .1);
     border-left: none;
     border-right: none;
-    transition: all 300ms ease;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    box-sizing: border-box;
 }
 
 .list_cloum {
+    
     flex-direction: column;
 }
 
@@ -57,29 +53,26 @@ page {
 }
 
 .list-item-course {
-    width: 30%;
+    width: 20%;
     padding: 0;
     line-height: auto;
     font-size: 34rpx;
     color: #FF0000;
-    border-top: 1px solid rgba(0, 0, 0, .1);
     display: flex;
     flex-direction: row;
     align-content: center;
     justify-content: space-between;
-    box-sizing: border-box;
 }
 
 .list-item-attr {
-    width: 100%;
+    width: 35%;
     padding: 0;
     line-height: auto;
     font-size: 24rpx;
     color: #007AFF;
-    border-top: 1px solid rgba(0, 0, 0, .1);
     display: flex;
     flex-direction: row;
-    align-content: center;
+    align-content: left;
     justify-content: space-between;
     box-sizing: border-box;
 }
@@ -93,4 +86,50 @@ page {
     line-height: 52px;
     font-size: 34rpx;
     color: #007AFF;
+}
+
+.item-box{
+    width: 100%;
+    margin: 0auto;
+    padding:40rpx 0;
+}
+
+.items{
+    width: 100%;
+}
+
+.item{
+    position: relative;
+    border-top: 2rpx solid#eee;
+    height: 120rpx;
+    line-height: 120rpx;
+    overflow: hidden;
+}
+
+.item:last-child{
+    border-bottom: 2rpx solid#eee;
+}
+
+.inner{
+    position: absolute;
+    top:0;
+}
+
+.inner.txt{
+    background-color: #fff;
+    width: 100%;
+    z-index: 5;
+    padding:010rpx;
+    transition: left0.2s ease-in-out;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.inner.del{
+    background-color: #e64340;
+    width: 180rpx;text-align: center;
+    z-index: 4;
+    right: 0;
+    color: #fff
 }

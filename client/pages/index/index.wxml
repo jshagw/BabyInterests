@@ -6,11 +6,7 @@
       <open-data type="userNickName" class="userinfo-nickname"></open-data>
     </view>
     <view wx:else>请升级微信版本</view>
-    <!--
-    <view>
-      <button bindtap='getOpenId'>获取openid</button>
-    </view>
-    -->
+    
     <block wx:if="{{logged}}">
       <view class="userinfo">
         <image class="userinfo-avatar" src="./user-unlogin.png" background-size="cover">
