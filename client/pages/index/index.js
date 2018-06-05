@@ -92,6 +92,7 @@ Page({
         success: function (res) {
           if (res.authSetting['scope.userInfo']) {
             // 已经授权，可以直接登录
+            console.log("login")
             that.login()
           }
         }

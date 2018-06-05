@@ -52,8 +52,26 @@ module.exports = {
               institution_id: params.institution_id,
               begin_date: params.begin_date,
               end_date: params.end_date
-            })
+            }).returning('id')
               .transacting(trx)
+              .then(function(ids) {
+                // 加上return 事务才生效
+                var sql = []
+                for ( var i = 0; i < params.course_times.length; ++i ) {
+                  var time = params.course_times[i]
+                  sql.push({
+                    baby_course_id: ids[0],
+                    baby_id: params.baby_id,
+                    course_id: params.course_id,
+                    begin_time: time.begin,
+                    end_time: time.end,
+                    day_of_week: time.id
+                  })
+                }
+                console.log(sql)
+                return mysql('bi_baby_course_times').insert(sql)
+                  .transacting(trx)
+              })
               .then(trx.commit)
               .catch(trx.rollback)
           })

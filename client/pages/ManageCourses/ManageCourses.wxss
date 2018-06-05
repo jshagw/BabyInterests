@@ -34,7 +34,7 @@ page {
 }
 
 .list_cloum {
-    
+    display: flex;
     flex-direction: column;
 }
 

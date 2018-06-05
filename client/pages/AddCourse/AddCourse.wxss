@@ -26,11 +26,31 @@ page {
 
 .list-item {
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-content: left;
+}
+
+.list-item:first-child {
+    border-top: none;
+}
+
+.list_row {
+    height: auto;
+    width: 100%;
+    background: #FFF;
+    border-left: none;
+    border-right: none;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.list-item-attr {
+    width: 100%;
     padding: 0;
-    line-height: 104rpx;
-    font-size: 34rpx;
-    color: #007AFF;
-    border-top: 1px solid rgba(0, 0, 0, .1);
+    line-height: auto;
+    font-size: 28rpx;
     display: flex;
     flex-direction: row;
     align-content: center;
@@ -38,8 +58,9 @@ page {
     box-sizing: border-box;
 }
 
-.list-item:first-child {
-    border-top: none;
+.list_cloum {    
+    display: flex;
+    flex-direction: column;
 }
 
 .page-section{

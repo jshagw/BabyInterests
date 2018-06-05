@@ -4,13 +4,16 @@ var config = require('../../config')
 var util = require('../../utils/util.js')
 var baby = require('../../utils/baby.js')
 
+var weeks = ["周一","周二","周三","周四","周五","周六","周日"]
+
 Page({
   data: {
     courses: {},
     begin_date: "",
     end_date: "",
     sel_course: "",
-    institutions: {}
+    institutions: {},
+    course_times: {}
   },
 
   submit: function (event) {
@@ -42,6 +45,11 @@ Page({
       return
     }
 
+    if ( params.course_times.length === 0 ) {
+      util.showModel("输入错误", "至少选择一个课程时间")
+      return
+    }
+
     var babyInfo = baby.get()
     if (!babyInfo.hasBaby) {
       util.showModel("输入错误", "宝宝还未设置")
@@ -49,6 +57,16 @@ Page({
     }
 
     params['baby_id'] = babyInfo.id
+
+    for ( var i = 0; i < params.course_times.length; ++i ) {
+      var index = params.course_times[i]
+      var time = this.data.course_times[index]
+      params.course_times[i] = {
+        id: time.id,
+        begin: time.begin,
+        end: time.end
+      }
+    }
 
     qcloud.request({
       url: config.service.interestUrl,
@@ -65,6 +83,21 @@ Page({
         console.log('request fail', error)
       }
     })
+  },
+
+  initCourseTimes: function() {
+    var course_times = []
+    for ( var i = 0; i < 7; ++i ) {
+      course_times.push({
+        id: i,
+        name: weeks[i],
+        checked: false,
+        begin: "00:00",
+        end: "24:00"
+      })
+    }
+
+    this.setData({course_times: course_times})
   },
 
   getCourses: function() {
@@ -86,6 +119,7 @@ Page({
   },
 
   onLoad: function() {
+    this.initCourseTimes()
     this.getCourses()
   },
 
@@ -124,5 +158,19 @@ Page({
 
   selectEndDate: function (event) {
     this.setData({ end_date: event.detail.value })
+  },
+
+  selectBeginTime: function (event) {
+    var index = event.currentTarget.id
+    var course_times = this.data.course_times
+    course_times[index].begin = event.detail.value
+    this.setData({ course_times: course_times })
+  },
+
+  selectEndTime: function (event) {
+    var index = event.currentTarget.id
+    var course_times = this.data.course_times
+    course_times[index].end = event.detail.value
+    this.setData({ course_times: course_times })
   }
 })
