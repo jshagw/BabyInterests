@@ -20,7 +20,8 @@ var config = {
         babyUrl: `${host}/weapp/baby`,
         interestUrl: `${host}/weapp/interest`,
         courseUrl: `${host}/weapp/course`,
-        institutionUrl: `${host}/weapp/institution`
+        institutionUrl: `${host}/weapp/institution`,
+        dayCourseUrl: `${host}/weapp/dayCourse`
     }
 };
 

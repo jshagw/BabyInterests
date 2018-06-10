@@ -1,12 +1,18 @@
 <!--CurrentCourse.wxml-->
 <view class="container">
+    <view wx:if="{{courses.length==0}}">
+      <text>今天没有课程</text>
+    </view>
     <!-- 今天课程列表 -->
-    <view class="list">
-        <view class="list-item" bindtap="testCgi">
-            <text>测试 CGI</text>
-        </view>
-        <view class="list-item">
-            <text class="request-text">期望输出：{"code":0,"data":{"msg":"Hello World"}}</text>
+    <view wx:else class="list">
+        <view class="list_row" wx:for="{{courses}}" wx:key="{{id}}"
+              data-index="{{index}}" bindtap='selectCourse'>
+          <view class="list-item-course">
+            <text>{{item.name}}</text>
+          </view>
+          <view class="list-item-attr">
+            <text>{{item.begin}} ~ {{item.end}}</text>
+          </view>       
         </view>
     </view>
 </view>
