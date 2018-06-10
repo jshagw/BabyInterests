@@ -7,6 +7,7 @@ var baby = require('../../utils/baby.js')
 Page({
   data: {
     courses: {},
+    isAddCourse: false,
     delBtnWidth: 180
   },
 
@@ -50,7 +51,7 @@ Page({
 
     this.setData({
       delBtnWidth: delBtnWidth
-    });
+    })
   },
   
   onLoad: function() {
@@ -58,8 +59,17 @@ Page({
     this.getCourses()
   },
 
+  onShow: function(options) {
+    if (this.data.isAddCourse) {
+      this.getCourses()
+      this.setData({ isAddCourse: false })
+    }
+  },
+
   deleteCourse: function(e) {
-    var index = e.currentTarget.dataset.index;
+    var index = e.currentTarget.dataset.index
+    var courses = this.data.courses
+    var that = this
     var course = this.data.courses[index]
 
     qcloud.request({
@@ -70,8 +80,9 @@ Page({
       
       success(result) {
         util.showSuccess('删除成功')
-        wx.navigateTo({
-          url: './ManageCourses',
+        courses.splice(index, 1)
+        that.setData({
+          courses: courses
         })
       },
 

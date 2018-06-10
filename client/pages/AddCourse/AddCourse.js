@@ -4,7 +4,7 @@ var config = require('../../config')
 var util = require('../../utils/util.js')
 var baby = require('../../utils/baby.js')
 
-var weeks = ["周一","周二","周三","周四","周五","周六","周日"]
+var weeks = ["周日","周一","周二","周三","周四","周五","周六"]
 
 Page({
   data: {
@@ -75,7 +75,16 @@ Page({
       data: params,
       success(result) {
         util.showSuccess('添加成功')
-        wx.navigateTo({url: "../ManageCourses/ManageCourses"})
+
+        var pages = getCurrentPages();
+        var currPage = pages[pages.length - 1];  //当前页面
+        var prevPage = pages[pages.length - 2]; //上一个页面
+
+        //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
+        prevPage.setData({
+          isAddCourse: true
+        })
+        wx.navigateBack()
       },
 
       fail(error) {
