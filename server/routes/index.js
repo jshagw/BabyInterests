@@ -30,4 +30,8 @@ router.get('/course', controllers.course.get)
 // 培训机构
 router.get('/institution', controllers.institution.get)
 
+// 某天课程
+router.get('/dayCourse', controllers.dayCourse.get)
+router.post('/dayCourse', controllers.dayCourse.post)
+
 module.exports = router
