@@ -1,4 +1,4 @@
-var schedule = require('node-schedule.js')
+var schedule = require('node-schedule')
 var sms = require('../utils/sms.js')
 
 var notifyNextDayCourse = function () {

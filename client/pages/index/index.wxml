@@ -1,11 +1,26 @@
 <!--index.wxml-->
 <view class="container">
     <!-- 用户登录测试 -->
+    <view class="userinfo" bindtap="login">
+        <image
+            class="userinfo-avatar"
+            src="{{logged ? userInfo.avatarUrl : './user-unlogin.png'}}"
+            background-size="cover"
+        ></image>
+        <!-- 需要使用 button 来授权登录 -->
+        <view wx:if="{{canIUse}}">
+            <button wx:if="{{!logged}}" open-type="getUserInfo">授权登录</button>
+            <text class='userinfo-nickname' wx:if="{{logged}}">{{userInfo.nickName}}</text>
+        </view>
+        <view wx:else>请升级微信版本</view>
+    </view>
+    <!--
     <view class="userinfo" bindtap="login" wx:if="{{canIUse}}">
       <open-data type="userAvatarUrl" class="userinfo-avatar"></open-data>  
       <open-data type="userNickName" class="userinfo-nickname"></open-data>
     </view>
     <view wx:else>请升级微信版本</view>
+    -->
     
     <block wx:if="{{logged}}">
       <view class="userinfo">
