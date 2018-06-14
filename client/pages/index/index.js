@@ -11,7 +11,7 @@ Page({
         logged: false,
         takeSession: false,
         requestResult: '',
-        babyInfo: {},
+        babyInfo: baby.get(),
         requestBabyInfoFailed: false
     },
 
@@ -99,10 +99,6 @@ Page({
           }
         }
       })
-    },
-
-    onShow: function() {
-      this.setData({babyInfo: baby.get()})
     },
 
     bindGetUserInfo: function (e) {
