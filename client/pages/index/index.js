@@ -23,10 +23,12 @@ Page({
         method: "GET",
         login: false,
         success(result) {
-          var babyInfo = result.data.data[0]
-          console.log("baby", result.data.data)
-          baby.set(babyInfo)
-          that.setData({ babyInfo: baby.get() })
+          var babyInfos = result.data.data
+          //console.log("baby", result.data.data)
+          if ( babyInfos.length > 0 ) {
+            baby.set(babyInfos[0])
+            that.setData({ babyInfo: baby.get() })
+          }
         },
 
         fail(error) {
