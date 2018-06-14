@@ -6,7 +6,7 @@ const CONF = {
     appId: 'wxc9a573e1114f78f0',
 
     // 微信小程序 App Secret
-    appSecret: '',
+    appSecret: '3c9d7ab07af76a6c8e1f9096d8846e47',
 
     // 是否使用腾讯云代理登录小程序
     useQcloudLogin: true,
@@ -35,6 +35,12 @@ const CONF = {
         fileBucket: 'qcloudtest',
         // 文件夹
         uploadFolder: ''
+    },
+
+    sms: {
+      AppID: '1400100358',
+      AppKey: 'aa1834544ce11759782afa03b7bf6b69',
+      templateId: 138075
     },
 
     // 微信登录态有效期
