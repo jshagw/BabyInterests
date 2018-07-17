@@ -24,18 +24,18 @@
     
     <block wx:if="{{logged}}">
       <view class="userinfo">
-        <image class="userinfo-avatar" src="./user-unlogin.png" background-size="cover">
+        <image class="userinfo-avatar" src="./baby.png" background-size="cover">
         </image>
         <button wx:if="{{requestBabyInfoFailed}}" bindtap='getBabyInfo'>获取宝宝信息</button>
         <navigator wx:elif="{{babyInfo.is_creator}}" 
                   url="../AddBaby/AddBaby" 
                   open-type="navigate" class="navigate-name"
-        >{{babyInfo.hasBaby ? babyInfo.name : "点击设置我的宝宝"}}</navigator>
-        <text wx:else>{{babyInfo.name}}</text>
+        >{{babyInfo.hasBaby ? "宝宝：" + babyInfo.name : "点击设置我的宝宝"}}</navigator>
+        <text wx:else>{{"宝宝：" + babyInfo.name}}</text>
       </view>
       <block wx:if="{{babyInfo.hasBaby}}">
         <view class="userinfo">
-          <image class="userinfo-avatar" src="./user-unlogin.png" background-size="cover">
+          <image class="userinfo-avatar" src="./today_interest.png" background-size="cover">
           </image>
           <navigator url="../CurrentCourse/CurrentCourse" 
                     open-type="navigate" class="navigate-menu"
@@ -43,7 +43,7 @@
         </view>
 
         <view class="userinfo">
-          <image class="userinfo-avatar" src="./user-unlogin.png" background-size="cover">
+          <image class="userinfo-avatar" src="./interests_manage.png" background-size="cover">
           </image>
           <navigator url="../ManageCourses/ManageCourses" 
                     open-type="navigate" class="navigate-menu"

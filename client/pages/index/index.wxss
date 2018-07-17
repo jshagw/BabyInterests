@@ -28,12 +28,12 @@ page {
 }
 
 .userinfo-nickname {
-    font-size: 32rpx;
-    color: #007AFF;
+    font-size: 45rpx;
+    color: #0063ce;
 }
 
 .babyinfo-name {
-    font-size: 32rpx;
+    font-size: 45rpx;
     color: #007AFF;
     align-content: center;
 }
@@ -47,16 +47,16 @@ page {
 }
 
 .navigate-name {
-    width: 100%;
+    width: 80%;
     line-height: 52px;
-    font-size: 34rpx;
+    font-size: 45rpx;
     color: #007AFF;
 }
 
 .navigate-menu {
-    width: 100%;
+    width: 80%;
     line-height: 52px;
-    font-size: 34rpx;
+    font-size: 45rpx;
     color: #FF0000;
 }
 

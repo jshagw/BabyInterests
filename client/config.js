@@ -4,6 +4,8 @@
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
 var host = 'https://a2bgi14b.qcloud.la';
+// 生产环境
+//var host = 'https://910088659.babyinterests.xyz';
 
 var config = {
 
