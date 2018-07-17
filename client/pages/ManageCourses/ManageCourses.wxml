@@ -7,31 +7,29 @@
   </view>
 
   <view class="item-box">
-    <view class="items">
-      <view wx:for="{{courses}}" wx:key="{{id}}" class="item">
-        <view 
-            bindtouchstart="touchS"
-            bindtouchmove="touchM"
-            bindtouchend="touchE"
-            data-index="{{index}}"
-            style="{{item.txtStyle}}"
-            class="inner.txt">
-          <view class="list_row">
-            <view class="list-item-course">
-              <text>{{item.course_name}}</text>
-            </view>
-           
-            <view class="list-item-attr">
+    <view wx:for="{{courses}}" wx:key="{{id}}" class="item">
+      <view 
+          bindtouchstart="touchS"
+          bindtouchmove="touchM"
+          bindtouchend="touchE"
+          data-index="{{index}}"
+          style="{{item.txtStyle}}"
+          class="inner.txt">
+        <view class="list_row">
+          <view class="list-item-course">
+            <text>{{item.course_name}}</text>
+          </view>
+          <view class="list_cloum">
+            <view class="list-item">
               <text>{{item.institution_name}}</text>
             </view>
-            <view class="list-item-attr">
+            <view class="list-item">
               <text>{{item.begin_date}} ~ {{item.end_date}}</text>
             </view>
-            
           </view>
         </view>
-        <view data-index="{{index}}" bindtap="deleteCourse" class="inner.del">删除</view>
       </view>
+      <view data-index="{{index}}" bindtap="deleteCourse" class="inner.del">删除</view>
     </view>
   </view>
 </view>

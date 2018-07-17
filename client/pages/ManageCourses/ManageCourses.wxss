@@ -25,7 +25,6 @@ page {
 .list_row {
     height: auto;
     width: 100%;
-    background: #FFF;
     border-left: none;
     border-right: none;
     display: flex;
@@ -34,29 +33,26 @@ page {
 }
 
 .list_cloum {
+    width: 70%;
     display: flex;
     flex-direction: column;
 }
 
 .list-item {
-    width: 100%;
-    padding: 0;
-    line-height: auto;
+    position: relative;
+    border-top: 1rpx solid #eee;
+    height: 50%;
+    line-height: 40rpx;
     font-size: 34rpx;
     color: #007AFF;
-    border-top: 1px solid rgba(0, 0, 0, .1);
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: space-between;
-    box-sizing: border-box;
+    margin-top: 8rpx;
 }
 
 .list-item-course {
-    width: 20%;
-    padding: 0;
+    width: 30%;
+    margin-left: 5rpx;
     line-height: auto;
-    font-size: 34rpx;
+    font-size: 40rpx;
     color: #FF0000;
     display: flex;
     flex-direction: row;
@@ -65,16 +61,9 @@ page {
 }
 
 .list-item-attr {
-    width: 35%;
-    padding: 0;
-    line-height: auto;
-    font-size: 24rpx;
-    color: #007AFF;
+    width: 65%;
     display: flex;
-    flex-direction: row;
-    align-content: left;
-    justify-content: space-between;
-    box-sizing: border-box;
+    flex-direction: column;
 }
 
 .list-item:first-child {
@@ -84,7 +73,7 @@ page {
 .navigate-add {
     width: 100%;
     line-height: 52px;
-    font-size: 34rpx;
+    font-size: 45rpx;
     color: #007AFF;
 }
 
@@ -94,13 +83,9 @@ page {
     padding:40rpx 0;
 }
 
-.items{
-    width: 100%;
-}
-
 .item{
     position: relative;
-    border-top: 2rpx solid#eee;
+    border-top: 2rpx solid #eee;
     height: 120rpx;
     line-height: 120rpx;
     overflow: hidden;
