@@ -4,18 +4,20 @@
     <view class="weui-cells__title">选择课程</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
-        <radio-group name="course_id" bindchange="selectCourse">
-          <label class="radio" wx:for="{{courses}}" wx:key="id">
-            <radio value="{{item.id}}" checked='{{item.id == sel_course}}'>
-              {{item.name}}
-            </radio>
-          </label>
+        <radio-group class="rg" name="course_id" bindchange="selectCourse">
+          <view class="class_r_g" wx:for="{{courses}}" wx:key="id">
+            <label class="radio">
+              <radio value="{{item.id}}" checked='{{item.id == sel_course}}'>
+                {{item.name}}
+              </radio>
+            </label>
+          </view>
         </radio-group>
       </view>
     </view>
   </view>
   <view class="page-section">
-    <view class="weui-cells__title">选择培训机构</view>
+    <view class="weui-cells__title">培训机构</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
         <radio-group name="institution_id">
@@ -29,9 +31,9 @@
     </view>
   </view>
   <view class="page-section">
-    <view class="weui-cells__title">开始日期</view>
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell weui-cell_input">
+    <view class="weui-cells__title">课程日期</view>
+    <view class="weui-cells weui-cells_after-title list_row">
+      <view class="list-item-date">
         <picker mode="date" name="begin_date" start="2018-01-01"
                 bindchange='selectBeginDate'
         >
@@ -40,12 +42,10 @@
           </view>
         </picker>
       </view>
-    </view>
-  </view>
-  <view class="page-section">
-    <view class="weui-cells__title">结束日期</view>
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell weui-cell_input">
+      <view class="list-item-text">
+        <text>~</text>
+      </view>
+      <view class="list-item-date">
         <picker mode="date" name="end_date" start="2018-01-01"
                 bindchange='selectEndDate'
         >
@@ -57,14 +57,14 @@
     </view>
   </view>
   <view class="page-section">
-    <view class="weui-cells__title">设置上课时间</view>
+    <view class="weui-cells__title">上课时间</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="">
         <checkbox-group name="course_times">
           <view class="list_row" wx:for="{{course_times}}" wx:key="id">
             <view class="list-item-attr">
               <label class="checkbox">
-                <checkbox value="{{index}}" checked='{{item.checked}}'>
+                <checkbox class="week_check" value="{{index}}" checked='{{item.checked}}'>
                   {{item.name}}
                 </checkbox>
               </label>
@@ -78,7 +78,7 @@
                 </view>
               </picker>
             </view>
-            <view class="list-item-attr">
+            <view class="list-item-text">
               <text>~</text>
             </view>
             <view class="list-item-attr">
