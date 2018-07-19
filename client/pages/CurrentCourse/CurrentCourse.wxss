@@ -50,10 +50,11 @@ page {
 }
 
 .list-item-course {
-    width: 20%;
+    width: 30%;
+    margin-left: 20rpx;
     padding: 0;
     line-height: auto;
-    font-size: 34rpx;
+    font-size: 45rpx;
     color: #FF0000;
     display: flex;
     flex-direction: row;
@@ -62,10 +63,10 @@ page {
 }
 
 .list-item-attr {
-    width: 100%;
+    width: 70%;
     padding: 0;
     line-height: auto;
-    font-size: 34rpx;
+    font-size: 45rpx;
     color: #007AFF;
     display: flex;
     flex-direction: row;
