@@ -34,6 +34,7 @@ Page({
     },
 
     selectCourse: function(event) {
+      return
       var index = event.currentTarget.dataset.index
       var course = this.data.courses[index]
       var url = '../CourseComment/CourseComment?id=' + course.id 
