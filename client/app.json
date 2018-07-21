@@ -5,7 +5,8 @@
     "pages/CurrentCourse/CurrentCourse",
     "pages/ManageCourses/ManageCourses",
     "pages/AddCourse/AddCourse",
-    "pages/CourseComment/CourseComment"
+    "pages/CourseComment/CourseComment",
+    "pages/BindPhone/BindPhone"
   ],
   "window":{
     "backgroundColor":"#F6F6F6",

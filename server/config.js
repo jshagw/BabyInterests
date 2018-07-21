@@ -40,7 +40,9 @@ const CONF = {
     sms: {
       AppID: '1400100358',
       AppKey: 'aa1834544ce11759782afa03b7bf6b69',
-      templateId: 138075
+      course_templateId: 138075,
+      verify_templateId: 160442,
+      verification_expires: 5
     },
 
     // 微信登录态有效期

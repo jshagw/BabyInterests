@@ -23,7 +23,9 @@ var config = {
         interestUrl: `${host}/weapp/interest`,
         courseUrl: `${host}/weapp/course`,
         institutionUrl: `${host}/weapp/institution`,
-        dayCourseUrl: `${host}/weapp/dayCourse`
+        dayCourseUrl: `${host}/weapp/dayCourse`,
+        phoneUrl: `${host}/weapp/phone`,
+        verificationUrl: `${host}/weapp/verification`
     }
 };
 

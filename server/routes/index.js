@@ -34,4 +34,8 @@ router.get('/institution', controllers.institution.get)
 router.get('/dayCourse', controllers.dayCourse.get)
 router.post('/dayCourse', controllers.dayCourse.post)
 
+// 手机号码
+router.get('/phone', controllers.phone.get)
+router.get('/verification', controllers.verification.get)
+
 module.exports = router

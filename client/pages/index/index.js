@@ -103,5 +103,11 @@ Page({
 
     bindGetUserInfo: function (e) {
       //console.log(e.detail.userInfo)
+    },
+
+    bindPhoneNumber: function () {
+      wx.navigateTo({
+        url: "../BindPhone/BindPhone"
+      })
     }
 })
