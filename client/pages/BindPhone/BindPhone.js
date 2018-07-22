@@ -17,8 +17,43 @@ Page({
   },
 
   submit: function(event) {
-    console.log(event.detail.value)
     var params = event.detail.value
+    console.log(params)
+
+    if ( params.phone === "" ) {
+      util.showModel("输入错误", "手机号码不能为空")
+      return
+    }
+
+    if (params.code === "") {
+      util.showModel("输入错误", "验证码不能为空")
+      return
+    }
+
+    // 判断手机号码格式
+    var reg = /^1\d{10}$/
+    if (!reg.test(params.phone)) {
+      util.showModel("输入错误", "手机号码格式不正确")
+      return
+    }
+
+
+
+    qcloud.request({
+      url: config.service.phoneUrl,
+      method: "POST",
+      login: false,
+      data: params,
+      success(result) {
+        util.showSuccess('设置成功')
+        wx.navigateBack()
+      },
+
+      fail(error) {
+        util.showModel('请求失败', error.message)
+        console.log('request phone fail', error)
+      }
+    })
   },
 
   confirmPhoneNumber: function(event) {
@@ -85,8 +120,9 @@ Page({
       method: "GET",
       login: false,
       success(result) {
-        console.log("phone:", result.data.data)
-        that.setData({ phoneNumber: result.data.data[0] })
+        //console.log("phone:", result.data.data)
+        that.setData({ phoneNumber: result.data.data[0].phone })
+        //console.log(that.data.phoneNumber)
       },
 
       fail(error) {

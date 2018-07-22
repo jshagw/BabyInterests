@@ -36,6 +36,9 @@ router.post('/dayCourse', controllers.dayCourse.post)
 
 // 手机号码
 router.get('/phone', controllers.phone.get)
+router.post('/phone', controllers.phone.post)
+
+// 验证码
 router.get('/verification', controllers.verification.get)
 
 module.exports = router
