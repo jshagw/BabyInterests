@@ -6,6 +6,10 @@ const bodyParser = require('koa-bodyparser')
 const config = require('./config')
 const courses = require('./courses/todayCourse.js')
 
+Date.prototype.getDateTime = function() {
+  return this.getFullYear() + '-' + (this.getMonth() + 1) + '-' + this.getDate() + ' ' + this.getHours() + ':' + this.getMinutes() + ':' + this.getSeconds()
+}
+
 // 使用响应处理中间件
 app.use(response)
 

@@ -87,7 +87,8 @@ module.exports = {
     var params = ctx.request.body
     
     await mysql('bi_baby_courses').update({
-        'status': 99
+        'status': 99,
+        'deletetime': new Date().getDateTime()
       })
       .where({
         'id': params.id

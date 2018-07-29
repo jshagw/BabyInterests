@@ -30,7 +30,7 @@ module.exports = {
   post: async (ctx, next) => {
     var params = ctx.request.body
     var skey = ctx.req.headers["x-wx-skey"]
-
+    
     await mysql('cSessionInfo').select('open_id').where('skey', skey)
       .then(function(result) {
         if (result.length === 0 || !result[0].open_id) {
@@ -42,10 +42,12 @@ module.exports = {
         var open_id = result[0].open_id
         if ( params.id ) {
           mysql.transaction(function (trx) {
+            var now = new Date()
             mysql('bi_babies').update({
               name: params.name,
               sex: params.sex,
-              birthday: params.birthday
+              birthday: params.birthday,
+              updatetime: new Date().getDateTime()
             }).where('id', params.id)
               .transacting(trx)
               .then(function (ids) {
