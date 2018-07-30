@@ -1,7 +1,7 @@
 <!--BindPhone.wxml-->
 <form bindsubmit="submit">
   <view class="bind-text">
-    <text>{{phoneNumber ? "已绑定: " + phoneNumber : "未绑定手机号码"}}</text>
+    <text>{{phoneNumber ? "已绑定: " + phoneNumber : "请绑定手机号码"}}</text>
   </view>
   <view class="phone">
       <input name="phone" class="weui-input" 

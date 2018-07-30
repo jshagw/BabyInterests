@@ -39,7 +39,7 @@ Page({
     },
 
     // 用户登录示例
-    login: function() {
+    login: function(callback) {
         if (this.data.logged) return
 
         util.showBusy('正在登录')
@@ -55,8 +55,7 @@ Page({
                         logged: true
                     })
 
-                    // 获取宝宝信息
-                    that.getBabyInfo()
+                    callback(true)
                 } else {
                     // 如果不是首次登录，不会返回用户信息，请求用户信息接口获取
                     qcloud.request({
@@ -69,7 +68,7 @@ Page({
                                 logged: true
                             })
 
-                            that.getBabyInfo()
+                            callback(true)
                         },
 
                         fail(error) {
@@ -94,8 +93,18 @@ Page({
         success: function (res) {
           if (res.authSetting['scope.userInfo']) {
             // 已经授权，可以直接登录
-            console.log("login")
-            that.login()
+            that.login(function(result) {
+              if ( result ) {
+                // 获取宝宝信息
+                that.getBabyInfo()
+
+                if (!that.data.userInfo.phone || that.data.userInfo.phone === "") {
+                  wx.navigateTo({
+                    url: '../BindPhone/BindPhone',
+                  })
+                }
+              }
+            })
           }
         }
       })
