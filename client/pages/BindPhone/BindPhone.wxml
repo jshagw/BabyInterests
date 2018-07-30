@@ -1,6 +1,6 @@
 <!--BindPhone.wxml-->
 <form bindsubmit="submit">
-  <view class="phone">
+  <view class="bind-text">
     <text>{{phoneNumber ? "已绑定: " + phoneNumber : "未绑定手机号码"}}</text>
   </view>
   <view class="phone">
@@ -8,7 +8,7 @@
             placeholder="请输入手机号码" bindblur='confirmPhoneNumber'/>
   </view>
   <view class="verification">
-      <input name="code" class="weui-input" placeholder="请输入验证码"/>
+      <input name="code" class="verify-input" placeholder="请输入验证码"/>
       <button class='verify_button' disabled='{{disabled}}' bindtap='getVerificationCode'>{{verifyText}}</button>
   </view>
   <view class="page-section">
