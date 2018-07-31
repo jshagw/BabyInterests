@@ -41,4 +41,7 @@ router.post('/phone', controllers.phone.post)
 // 验证码
 router.get('/verification', controllers.verification.get)
 
+// 共享宝宝
+router.post('/shareBaby', controllers.shareBaby.post)
+
 module.exports = router

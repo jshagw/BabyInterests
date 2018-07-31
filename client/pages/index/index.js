@@ -100,7 +100,7 @@ Page({
 
                 if (!that.data.userInfo.phone || that.data.userInfo.phone === "") {
                   wx.navigateTo({
-                    url: '../BindPhone/BindPhone',
+                    url: "../BindPhone/BindPhone?name=" + that.data.userInfo.nickName
                   })
                 }
               }
@@ -115,8 +115,9 @@ Page({
     },
 
     bindPhoneNumber: function () {
+      var that = this
       wx.navigateTo({
-        url: "../BindPhone/BindPhone"
+        url: "../BindPhone/BindPhone?name=" + this.data.userInfo.nickName
       })
     }
 })

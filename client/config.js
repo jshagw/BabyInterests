@@ -25,7 +25,8 @@ var config = {
         institutionUrl: `${host}/weapp/institution`,
         dayCourseUrl: `${host}/weapp/dayCourse`,
         phoneUrl: `${host}/weapp/phone`,
-        verificationUrl: `${host}/weapp/verification`
+        verificationUrl: `${host}/weapp/verification`,
+        shareBabyUrl: `${host}/weapp/shareBaby`
     }
 };
 

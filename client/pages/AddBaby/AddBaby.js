@@ -47,5 +47,47 @@ Page({
 
   selectBirthday : function (event) {
     this.setData({birthday: event.detail.value})
+  },
+
+  shareBaby : function (event) {
+    var that = this
+    wx.scanCode({
+      scanType: 'qrCode',
+      success: function (res) {
+        var info = JSON.parse(res.result)
+
+        console.log(info)
+
+        if ( !info.id || !info.name ) {
+          return
+        }
+        
+        wx.showModal({
+          title: '宝宝兴趣',
+          content: '是否与【' + info.name + '】共享宝宝？',
+          cancelText: '否',
+          confirmText: '是',
+          success : function (result) {
+            if ( result.confirm ) {
+              qcloud.request({
+                url: config.service.shareBabyUrl,
+                method: 'POST',
+                login: false,
+                data: {id: info.id, baby: that.data.id},
+                success(result) {
+                  util.showSuccess('共享成功')
+                  wx.navigateBack()
+                },
+
+                fail(error) {
+                  util.showModel('请求失败', error)
+                  console.log('request fail', error)
+                }
+              })              
+            }
+          }
+        })
+      }
+    })
   }
 })

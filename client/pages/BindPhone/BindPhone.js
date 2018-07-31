@@ -192,16 +192,22 @@ Page({
    */
   onLoad: function (options) {
     this.getPhoneNumber()
+
+    var size = this.setCanvasSize();//动态设置画布大小
+    //调用插件中的draw方法，绘制二维码图片
+    var str = {
+      id: session.get(),
+      name: options.name
+    }
+    
+    this.createQrCode(JSON.stringify(str), "mycanvas", size.w, size.h);
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    var size = this.setCanvasSize();//动态设置画布大小
-    //调用插件中的draw方法，绘制二维码图片
-    var initUrl = session.get()
-    this.createQrCode(initUrl, "mycanvas", size.w, size.h);
+  
   },
 
   /**

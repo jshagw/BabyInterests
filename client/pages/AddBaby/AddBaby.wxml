@@ -49,5 +49,8 @@
   <view class="page-section">
     <button type="primary" form-type="submit">确认</button>
   </view>
+  <view class="page-section">
+    <button wx:if='{{hasBaby}}' class="btn" bindtap='shareBaby'>共享宝宝信息给亲属</button>
+  </view>
 </form>
 

@@ -50,3 +50,7 @@ page {
 .picker{
     padding: 10rpx;
 }
+
+.btn {
+  background-color: #007AFF
+}
