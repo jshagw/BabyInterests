@@ -14,4 +14,12 @@
   <view class="page-section">
     <button type="primary" form-type="submit">绑定</button>
   </view>
+
+  <view class="img-box">
+    <image bindtap="previewImg" mode="scaleToFill" src="{{imagePath}}"></image>
+  </view>
+  <view hidden="{{maskHidden}}" class="mask"></view>
+  <view class="canvas-box">
+    <canvas hidden="{{canvasHidden}}" class="qrcanvas" canvas-id="mycanvas"/>
+  </view>
 </form>
