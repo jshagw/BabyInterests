@@ -1,0 +1,39 @@
+<!--AddBaby.wxml-->
+<form bindsubmit="submit">
+  <view class="page-section">
+    <view class="weui-cells__title">宝宝姓名</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input name="baby_name" class="weui-input" disabled='{{true}}' value='{{baby_name}}'/>
+      </view>
+    </view>
+  </view>
+  <view class="page-section">
+    <view class="weui-cells__title">亲属姓名</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input name="user_name" class="weui-input" disabled='{{true}}' value='{{user_name}}'/>
+      </view>
+    </view>
+  </view>
+  <view class="page-section">
+    <view class="weui-cells__title">与宝宝关系</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <radio-group name="relation">
+          <radio value='1' checked='{{true}}'>爸爸</radio>
+          <radio value='2'>妈妈</radio>
+          <radio value='3'>爷爷</radio>
+          <radio value='4'>奶奶</radio>
+        </radio-group>
+      </view>
+    </view>
+  </view>
+  <view class="page-section">
+    <button type="primary" form-type="submit">确认</button>
+  </view>
+  <view class="page-section">
+    <button bindtap='cancel'>取消</button>
+  </view>
+</form>
+

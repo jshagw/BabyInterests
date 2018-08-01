@@ -2,6 +2,7 @@
   "pages":[
     "pages/index/index",
     "pages/AddBaby/AddBaby",
+    "pages/ShareBaby/ShareBaby",
     "pages/CurrentCourse/CurrentCourse",
     "pages/ManageCourses/ManageCourses",
     "pages/AddCourse/AddCourse",

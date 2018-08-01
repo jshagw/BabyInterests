@@ -5,6 +5,7 @@ module.exports = {
     var params = ctx.request.body
     var skey = params.id
     var baby_id = params.baby
+    var relation = params.relation
 
     await mysql('cSessionInfo').select('open_id').where('skey', skey)
       .then(function (result) {
@@ -18,7 +19,7 @@ module.exports = {
         mysql('bi_user_babies').insert({
           open_id: open_id,
           baby_id: baby_id,
-          relation: 0
+          relation: relation
         }).then(function(res) {
           console.log(res)
         }).catch(function(e) {
