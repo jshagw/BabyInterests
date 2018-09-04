@@ -7,6 +7,8 @@ module.exports = {
     var baby_id = params.baby
     var relation = params.relation
 
+    console.log(params)
+
     await mysql('cSessionInfo').select('open_id').where('skey', skey)
       .then(function (result) {
         if (result.length === 0 || !result[0].open_id) {

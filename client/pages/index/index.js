@@ -24,7 +24,7 @@ Page({
         login: false,
         success(result) {
           var babyInfos = result.data.data
-          //console.log("baby", result.data.data)
+          console.log("baby", result.data.data)
           if ( babyInfos.length > 0 ) {
             baby.set(babyInfos[0])
             that.setData({ babyInfo: baby.get() })
@@ -39,7 +39,24 @@ Page({
     },
 
     // 用户登录示例
-    login: function(callback) {
+    login : function() {
+      var that = this
+      that.doLogin(function (result) {
+        if (result) {
+          // 获取宝宝信息
+          console.log("get baby info")
+          that.getBabyInfo()
+
+          if (!that.data.userInfo.phone || that.data.userInfo.phone === "") {
+            wx.navigateTo({
+              url: "../BindPhone/BindPhone?name=" + that.data.userInfo.nickName
+            })
+          }
+        }
+      })
+    },
+
+    doLogin: function(callback) {
         if (this.data.logged) return
 
         console.log("logining....")
@@ -96,22 +113,19 @@ Page({
           if (res.authSetting['scope.userInfo']) {
             // 已经授权，可以直接登录
             console.log("authed, begin to login")
-            that.login(function(result) {
-              if ( result ) {
-                // 获取宝宝信息
-                that.getBabyInfo()
-
-                if (!that.data.userInfo.phone || that.data.userInfo.phone === "") {
-                  wx.navigateTo({
-                    url: "../BindPhone/BindPhone?name=" + that.data.userInfo.nickName
-                  })
-                }
-              }
-            })
+            that.login()
           }
         }
       })
     },
+
+  onShow: function () {
+    var that = this
+    if ( that.data.logged && !that.data.babyInfo.hasBaby ) {
+      console.log("onshow get baby")
+      that.getBabyInfo()
+    }
+  },
 
     bindGetUserInfo: function (e) {
       //console.log(e.detail.userInfo)

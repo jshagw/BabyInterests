@@ -1,15 +1,15 @@
 <!--index.wxml-->
 <view class="container">
     <!-- 用户登录测试 -->
-    <view wx:if="{{canIUse}}" class="userinfo" bindtap="login">
+    <view wx:if="{{canIUse}}" class="userinfo">
         <image
             class="userinfo-avatar"
             src="{{logged ? userInfo.avatarUrl : './user-unlogin.png'}}"
             background-size="cover"
         ></image>
         <!-- 需要使用 button 来授权登录 -->
-        <button wx:if="{{!logged}}" open-type="getUserInfo" hidden='true'>授权登录</button>
-        <navigator url="../BindPhone/BindPhone?name={{userInfo.nickName}}" 
+        <button wx:if="{{!logged}}" open-type="getUserInfo" bindtap='login'>授权登录</button>
+        <navigator wx:else url="../BindPhone/BindPhone?name={{userInfo.nickName}}" 
                 open-type="navigate" class="navigate-menu"
         >{{userInfo.nickName}}</navigator>
     </view>

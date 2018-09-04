@@ -5,7 +5,7 @@
   </view>
   <view class="phone">
       <input name="phone" class="weui-input" 
-            placeholder="请输入手机号码" bindblur='confirmPhoneNumber'/>
+            placeholder="请输入手机号码" bindinput='confirmPhoneNumber'/>
   </view>
   <view class="verification">
       <input name="code" class="verify-input" placeholder="请输入验证码"/>

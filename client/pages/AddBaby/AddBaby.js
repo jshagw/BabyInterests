@@ -7,6 +7,14 @@ var baby = require('../../utils/baby.js')
 Page({
   data: baby.get(),
 
+  onLoad : function(options) {
+    
+  },
+
+  onShow : function() {
+    
+  },
+
   submit: function (event) {
     console.log(event.detail.value)
     var params = event.detail.value
