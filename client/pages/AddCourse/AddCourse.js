@@ -169,6 +169,23 @@ Page({
     this.setData({ end_date: event.detail.value })
   },
 
+  checkCourseTimesChanged : function(event) {
+    console.log(event.detail.value)
+    var checkedValue = event.detail.value
+    var course_times = this.data.course_times
+    for (var i = 0; i < 7; ++i) {
+      course_times[i].checked = false
+    }
+
+    for ( var i = 0; i < checkedValue.length; ++i ) {
+      course_times[checkedValue[i]].checked = true;
+    }
+
+    this.setData({
+      course_times : course_times
+    })
+  },
+
   selectBeginTime: function (event) {
     var index = event.currentTarget.id
     var course_times = this.data.course_times

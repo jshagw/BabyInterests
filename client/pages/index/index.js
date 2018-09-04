@@ -42,6 +42,8 @@ Page({
     login: function(callback) {
         if (this.data.logged) return
 
+        console.log("logining....")
+
         util.showBusy('正在登录')
         var that = this
 
@@ -93,6 +95,7 @@ Page({
         success: function (res) {
           if (res.authSetting['scope.userInfo']) {
             // 已经授权，可以直接登录
+            console.log("authed, begin to login")
             that.login(function(result) {
               if ( result ) {
                 // 获取宝宝信息

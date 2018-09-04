@@ -60,7 +60,7 @@
     <view class="weui-cells__title">上课时间</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="">
-        <checkbox-group name="course_times">
+        <checkbox-group name="course_times" bindchange="checkCourseTimesChanged">
           <view class="list_row" wx:for="{{course_times}}" wx:key="id">
             <view class="list-item-attr">
               <label class="checkbox">
